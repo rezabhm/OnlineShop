@@ -21,6 +21,7 @@ class CategoryRoot(models.Model):
 
 
 class CategorySubRoot(models.Model):
+
     """
 
         category sub root for define category sub root
