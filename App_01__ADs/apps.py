@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CoreConfig(AppConfig):
+class App01AdsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "Core"
+    name = "App_01__ADs"

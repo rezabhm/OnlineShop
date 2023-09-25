@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
 
-    "ADs",
-    "Core",
-    "Basket",
-    "Category",
-    "Product",
+    "App_01__ADs",
+    "App_02__Basket",
+    "App_03__Category",
+    "App_04__Core",
+    "App_05__Product",
 
 ]
 

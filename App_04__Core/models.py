@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from Product import models as product_model
+from App_05__Product import models as product_model
 
 # Create your models here.
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from Category import models as category_model
+from App_03__Category import models as category_model
 
 # Create your models here.
 
