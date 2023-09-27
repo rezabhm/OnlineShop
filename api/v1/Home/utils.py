@@ -1,4 +1,8 @@
 from App_03__Category import models
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
+from  . import serializer
 
 
 def category_list():
@@ -25,3 +29,14 @@ def category_list():
 
     return {'category_list': category_data}
 
+
+def account_information(request):
+
+    user_id = Token.objects.get(key=request.auth.key).user_id
+    user = User.objects.get(id=user_id)
+
+    user_serializer = serializer.AccountInfoSerializer(data=[user], many=True)
+
+    user_serializer.is_valid()
+
+    return user_serializer.data[0]
