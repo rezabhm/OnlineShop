@@ -6,5 +6,6 @@ urlpatterns = [
 
     re_path('^account-info/', api.AccountInfo.as_view()),
     re_path('^category-list/', api.CategoryList.as_view()),
+    re_path(r'^product-list/category=(?P<category>[\w]+)/$', api.ProductList.as_view()),
 
 ]

@@ -1,4 +1,5 @@
 from App_03__Category import models
+from App_05__Product import models as prd_model
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 
@@ -40,3 +41,21 @@ def account_information(request):
     user_serializer.is_valid()
 
     return user_serializer.data[0]
+
+
+def product_list(category):
+
+    """
+
+        return product list by category
+
+    """
+
+    product_obj_list = prd_model.Product.objects.filter(category_root__title=category)[:6]
+    product_list_serializer = serializer.ProductList(data=product_obj_list, many=True)
+    product_list_serializer.is_valid()
+
+    return {
+
+        'product-list': product_list_serializer.data
+    }
