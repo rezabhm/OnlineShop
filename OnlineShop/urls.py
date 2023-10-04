@@ -27,5 +27,6 @@ urlpatterns = [
 
     # API
     path('Home-API/v1/', include('api.v1.Home.urls')),
+    path('Authentication-API/v1/', include('api.v1.Authentication.urls')),
 
 ]
