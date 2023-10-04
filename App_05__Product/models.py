@@ -21,7 +21,7 @@ class Product(models.Model):
 
     price = models.FloatField()
 
-    image = models.ImageField()
+    image = models.ImageField(upload_to='product/')
 
     visualize_status = models.BooleanField(default=False)
 
