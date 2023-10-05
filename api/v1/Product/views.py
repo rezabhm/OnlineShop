@@ -22,3 +22,20 @@ class ProductImageList(APIView):
         data = utils.product_image_list(product_id)
 
         return JsonResponse(data, status=200)
+
+
+class ProductInformation(APIView):
+
+    """
+
+        return Product Description ( اطلاعات محصول را میدهد )
+
+    """
+
+    permission_classes = (AllowAny,)
+
+    def get(self, request, product_id):
+
+        data = utils.product_inf(product_id)
+
+        return JsonResponse(data, status=200)
