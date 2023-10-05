@@ -11,7 +11,7 @@ def product_image_list(product_id):
 
     """
 
-        return product list by category
+        return product image list
 
     """
 
@@ -48,7 +48,7 @@ def product_inf(product_id):
 
     """
 
-        return product list by category
+        return product description
 
     """
 
@@ -63,6 +63,52 @@ def product_inf(product_id):
             'status': True,
             'result': "product exist , (محصول مورد نظر یافت شد)",
             'product-inf': product_serializer.data,
+
+        }
+
+    except:
+
+        return {
+
+            'status': False,
+            'result': "product didn't exist , (محصول مورد نظر یافت نشد)",
+
+        }
+
+
+def product_color_size(product_id):
+
+    """
+
+        return product color and size
+
+    """
+
+    try:
+
+        # get product size list
+        product_size_list = prd_model.Size.objects.filter(color__product__id=product_id)
+
+        # create product list data
+        product_list = {}
+        for sz in product_size_list:
+
+            sz_serial = serializer.ProductSizeSerializer(data=[sz], many=True)
+            sz_serial.is_valid()
+
+            try:
+
+                product_list[sz.color.id].append(sz_serial.data[0])
+
+            except:
+
+                product_list[sz.color.id] = [sz_serial.data[0]]
+
+        return {
+
+            'status': True,
+            'result': "product exist , (محصول مورد نظر یافت شد)",
+            'product-size-color': product_list,
 
         }
 

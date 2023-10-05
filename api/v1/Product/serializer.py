@@ -33,3 +33,23 @@ class ProductListSerializer(serializers.ModelSerializer):
         model = models.Product
         fields = ['id', 'image']
 
+
+class ProductSizeSerializer(serializers.ModelSerializer):
+
+    color = serializers.CharField(required=True, validators=[validate_password])
+
+    class Meta:
+
+        model = models.Size
+        fields = ['id', 'size', 'stock_number', 'color']
+
+    def validate(self, attrs):
+        """
+
+            validate password with confirm password
+
+        """
+
+        attrs['color'] = models.Color.objects.get(id=attrs['color']).color
+
+        return attrs

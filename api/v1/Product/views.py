@@ -39,3 +39,20 @@ class ProductInformation(APIView):
         data = utils.product_inf(product_id)
 
         return JsonResponse(data, status=200)
+
+
+class ProductColorSize(APIView):
+
+    """
+
+        return Product Color and Size ( اطلاعات محصول را میدهد )
+
+    """
+
+    permission_classes = (AllowAny,)
+
+    def get(self, request, product_id):
+
+        data = utils.product_color_size(product_id)
+
+        return JsonResponse(data, status=200)
