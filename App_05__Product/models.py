@@ -82,13 +82,13 @@ class ProductImage(models.Model):
 
     id = models.CharField(max_length=75, primary_key=True)
 
-    image = models.ImageField()
+    image = models.ImageField(upload_to='productList/')
     visualize_status = models.BooleanField(default=True)
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.image
+        return self.id
 
 
 class ProductVote(models.Model):
