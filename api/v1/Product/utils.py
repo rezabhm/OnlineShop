@@ -120,3 +120,40 @@ def product_color_size(product_id):
             'result': "product didn't exist , (محصول مورد نظر یافت نشد)",
 
         }
+
+
+def suggestion_product_list(product_id):
+
+    """
+
+        return product suggestion list
+
+    """
+
+    try:
+
+        # get current product
+        product_obj = prd_model.Product.objects.get(id=product_id)
+
+    except:
+
+        return {
+
+            'status': 400,
+            'status_text': 'product not found'
+
+        }
+
+    # get suggestion product list
+    sg_product_list = prd_model.Product.objects.filter(category_root=product_obj.category_root)[:6]
+    sg_product_list_serializer = serializer.SuggestionProductList(data=sg_product_list, many=True)
+    sg_product_list_serializer.is_valid()
+
+    return {
+
+        'status': 200,
+        'status_text': 'successfully',
+        'suggestion-product-list': sg_product_list_serializer.data
+
+    }
+

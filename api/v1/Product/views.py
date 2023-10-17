@@ -45,7 +45,7 @@ class ProductColorSize(APIView):
 
     """
 
-        return Product Color and Size ( اطلاعات محصول را میدهد )
+        return Product Color and Size ( اطلاعات رنگ و سایز محصول را میدهد  )
 
     """
 
@@ -54,5 +54,20 @@ class ProductColorSize(APIView):
     def get(self, request, product_id):
 
         data = utils.product_color_size(product_id)
+
+        return JsonResponse(data, status=200)
+
+
+class SuggestionProductList(APIView):
+
+    """
+
+        return Product suggestion list ( لیست محصولات مشابه را میدهد )
+
+    """
+
+    def get(self, request, product_id):
+
+        data = utils.suggestion_product_list(product_id)
 
         return JsonResponse(data, status=200)

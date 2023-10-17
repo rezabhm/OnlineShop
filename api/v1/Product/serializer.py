@@ -53,3 +53,24 @@ class ProductSizeSerializer(serializers.ModelSerializer):
         attrs['color'] = models.Color.objects.get(id=attrs['color']).color
 
         return attrs
+
+
+class SuggestionProductList(serializers.ModelSerializer):
+
+    category_root = serializers.CharField(required=True, validators=[validate_password])
+
+    class Meta:
+
+        model = models.Product
+        fields = ['id', 'title', 'image', 'price', 'description', 'category_root']
+
+    def validate(self, attrs):
+        """
+
+            validate password with confirm password
+
+        """
+
+        attrs['category_root'] = models.category_model.objects.get(id=attrs['category_root']).title
+
+        return attrs
