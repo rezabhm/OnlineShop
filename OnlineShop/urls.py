@@ -31,5 +31,6 @@ urlpatterns = [
     path('Home-API/v1/', include('api.v1.Home.urls')),
     path('Authentication-API/v1/', include('api.v1.Authentication.urls')),
     path('Product-API/v1/', include('api.v1.Product.urls')),
+    path('Basket-API/v1/', include('api.v1.Basket.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

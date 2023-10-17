@@ -53,8 +53,8 @@ class Basket(models.Model):
 
     date = models.DateTimeField()
 
-    off_code = models.ForeignKey(OffCode, on_delete=models.PROTECT)
-    address = models.ForeignKey(core_model.Address, on_delete=models.PROTECT)
+    off_code = models.ForeignKey(OffCode, on_delete=models.PROTECT, null=True)
+    address = models.ForeignKey(core_model.Address, on_delete=models.PROTECT, null=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -73,7 +73,8 @@ class BasketItem(models.Model):
 
     product_number = models.IntegerField(default=1)
 
-    product = models.ManyToManyField(product_model.Product)
+    product_size = models.ManyToManyField(product_model.Size)
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.id
